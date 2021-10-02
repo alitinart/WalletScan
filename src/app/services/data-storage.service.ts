@@ -24,55 +24,53 @@ export class DataStorageService {
   constructor(private http: HttpClient) {}
 
   onSignUp(body: User) {
-    return this.http.post('http://192.168.178.79:3000/users/', body);
+    return this.http.post('http://ip.address:3000/users/', body);
   }
 
   onLogin(userName: string) {
-    return this.http.get(`http://192.168.178.79:3000/users/${userName}`);
+    return this.http.get(`http://ip.address:3000/users/${userName}`);
   }
 
   fetchUsers() {
-    return this.http.get(`http://192.168.178.79:3000/users/`);
+    return this.http.get(`http://ip.address:3000/users/`);
   }
 
   onDelete(id: string) {
-    return this.http.delete(`http://192.168.178.79:3000/users/${id}`);
+    return this.http.delete(`http://ip.address:3000/users/${id}`);
   }
 
   onGeneratePayment(body: Payment) {
-    return this.http.post('http://192.168.178.79:3000/payments/', body);
+    return this.http.post('http://ip.address:3000/payments/', body);
   }
 
   getPayment(id: string) {
-    return this.http.get(`http://192.168.178.79:3000/payments/${id}`);
+    return this.http.get(`http://ip.address:3000/payments/${id}`);
   }
 
   getPayments() {
-    return this.http.get('http://192.168.178.79:3000/payments/');
+    return this.http.get('http://ip.address:3000/payments/');
   }
 
   onPaymentAccepted(id: string, body: any) {
-    return this.http.patch(`http://192.168.178.79:3000/payments/${id}`, body);
+    return this.http.patch(`http://ip.address:3000/payments/${id}`, body);
   }
 
   onPaymentAcceptedUser(id: string, body: any) {
-    return this.http.patch(`http://192.168.178.79:3000/users/${id}`, body);
+    return this.http.patch(`http://ip.address:3000/users/${id}`, body);
   }
 
   getUser(id: string) {
-    return this.http.get(`http://192.168.178.79:3000/users/${id}`);
+    return this.http.get(`http://ip.address:3000/users/${id}`);
   }
 
   onTransaction(body: Transaction, userId: string) {
     return this.http.post(
-      `http://192.168.178.79:3000/users/${userId}/transactions`,
+      `http://ip.address:3000/users/${userId}/transactions`,
       body
     );
   }
 
   fetchTransactions(userId: string) {
-    return this.http.get(
-      `http://192.168.178.79:3000/users/${userId}/transactions`
-    );
+    return this.http.get(`http://ip.address:3000/users/${userId}/transactions`);
   }
 }
