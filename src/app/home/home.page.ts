@@ -50,6 +50,8 @@ export class HomePage implements OnInit {
             }
           });
           console.log(this.transactions);
+          this.loggedUser.transactions = this.transactions;
+          localStorage.setItem('user', JSON.stringify(this.loggedUser));
         });
     });
     if (this.loggedUser.transactions.length < 1) {
