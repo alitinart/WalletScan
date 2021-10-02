@@ -55,9 +55,9 @@ export class HomePage implements OnInit {
         });
     });
     if (this.loggedUser.transactions.length < 1) {
-      this.areTransactions = false;
-    } else {
       this.areTransactions = true;
+    } else {
+      this.areTransactions = false;
     }
   }
 }
