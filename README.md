@@ -10,4 +10,4 @@ Backend made with MongoDB, NodeJS and ExpressJS
 
 ## Dependencies
 
-To install dependencies run `npm install` on the root folder
+To install dependencies run `npm install` on terminal on the root folder
