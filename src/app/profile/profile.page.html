@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" *ngIf="isLoggedIn">
+    <ion-item>
+      <ion-avatar id="avatar">
+        <img [src]="loggedUser.imgPath" />
+      </ion-avatar>
+      <p class="user-info">
+        {{ loggedUser.firstName + ' ' +loggedUser.lastName }}
+      </p>
+    </ion-item>
+    <ion-button
+      (click)="onDelete()"
+      expand="block"
+      color="warning"
+      shape="round"
+      class="ion-margin-vertical"
+    >
+      Delete Account
+    </ion-button>
+  </div>
+  <div class="container" *ngIf="!isLoggedIn">
+    <div class="sign-up" *ngIf="isSignUp">
+      <h1 style="text-align: center">Sign Up</h1>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="First Name"
+        [(ngModel)]="firstName"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Last Name"
+        [(ngModel)]="lastName"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Username"
+        [(ngModel)]="userName"
+      />
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="password"
+      />
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Retype Password"
+        [(ngModel)]="retypePassword"
+      />
+      <label class="custom-file-upload">
+        <input type="file" (change)="onSelectNewFile($event.target)" hidden />
+        <ion-icon
+          slot="start"
+          class="image-upload"
+          name="camera"
+          *ngIf="!imagePicked"
+        ></ion-icon>
+        <img
+          [src]="imageUrl"
+          style="width: 50px; height: 50px; border-radius: 5px"
+          alt=""
+          *ngIf="imagePicked"
+        />
+      </label>
+      <ion-button
+        expand="block"
+        color="primary"
+        shape="round"
+        (click)="onSignUp()"
+      >
+        Submit
+      </ion-button>
+      <p class="loginLink" (click)="changeOption()">Switch To Login</p>
+    </div>
+    <div class="sign-up" *ngIf="!isSignUp">
+      <h1 style="text-align: center">Login</h1>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Username"
+        [(ngModel)]="userNameLogin"
+      />
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="passwordLogin"
+      />
+      <ion-button
+        expand="block"
+        color="primary"
+        shape="round"
+        (click)="onLogin()"
+      >
+        Submit
+      </ion-button>
+      <p class="loginLink" (click)="changeOption()">Switch To Sign Up</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-button
+    *ngIf="isLoggedIn"
+    (click)="onLogout()"
+    expand="block"
+    color="danger"
+  >
+    Logout
+  </ion-button>
+</ion-footer>

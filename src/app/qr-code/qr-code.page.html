@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Generate Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" *ngIf="!qrCodeText">
+    <h1 style="text-align: center" class="ion-margin-bottom">Send Payment</h1>
+    <input
+      type="text"
+      placeholder="Money to be sent..."
+      class="form-control"
+      [(ngModel)]="valueOfPayment"
+    />
+    <ion-button (click)="generatePayment()" expand="block">
+      Generate
+    </ion-button>
+  </div>
+
+  <div class="container" *ngIf="qrCodeText">
+    <h1 style="text-align: center">Screenshot and send to receiver</h1>
+    <qrcode
+      [qrdata]="qrCodeText"
+      [width]="256"
+      [errorCorrectionLevel]="'M'"
+    ></qrcode>
+    <ion-button (click)="qrCodeText = null;" routerLink="/" expand="block">
+      Done
+    </ion-button>
+  </div>
+</ion-content>

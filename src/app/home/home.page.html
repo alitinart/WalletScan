@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)"
+    style="background-color: white"
+  >
+    <ion-refresher-content
+      style="background-color: white"
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+    <div class="card" style="font-size: 20px">
+      Balance: {{ loggedUser.balance }} $
+    </div>
+    <div class="card transactions">
+      <h1 *ngIf="areTransactions" style="text-align: center; font-weight: 700">
+        You have no recent transactions
+      </h1>
+      <ion-list *ngIf="!areTransactions">
+        <ion-item *ngFor="let transaction of transactions">
+          <ion-avatar>
+            <img [src]="transaction.senderProfile" />
+          </ion-avatar>
+          <ion-label>{{transaction.sender}}</ion-label>
+          <ion-label>+ {{ transaction.value }}$</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

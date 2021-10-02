@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Receive Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" *ngIf="!paymentReceived">
+    <ion-img
+      src="./assets/icons/qrCode.png"
+      style="margin: 50px auto; width: 50%"
+    ></ion-img>
+    <p style="text-align: center">
+      Click the button below and align the QR Code properly
+    </p>
+    <ion-button (click)="openQR()" expand="block" class="ion-margin-vertical">
+      Scan QR Code
+    </ion-button>
+  </div>
+  <div class="container" *ngIf="paymentReceived">
+    <ion-item>
+      <ion-label>Sender: </ion-label>
+      <ion-avatar>
+        <img [src]="paymentReceived.senderProfile" />
+      </ion-avatar>
+      <ion-label>{{ paymentReceived.sender }}</ion-label>
+    </ion-item>
+    <div
+      style="text-align: center; display: block; margin-top: 50px"
+      class="card"
+    >
+      <h3 style="text-align: center; margin: 50px 0 10px 0">
+        Value of payment
+      </h3>
+      <h4 style="font-weight: 700">{{ paymentReceived.value }} $</h4>
+    </div>
+    <div class="buttonContainer">
+      <ion-button (click)="onAccept()" color="success"> Accept </ion-button>
+      <ion-button routerLink="/" (click)="paymentReceived;" color="danger">
+        Cancle
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
