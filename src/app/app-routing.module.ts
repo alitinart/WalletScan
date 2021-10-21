@@ -27,7 +27,11 @@ const routes: Routes = [
     path: 'scan-qr',
     loadChildren: () =>
       import('./scan-qr/scan-qr.module').then((m) => m.ScanQRPageModule),
+  },  {
+    path: 'address-setter',
+    loadChildren: () => import('./address-setter/address-setter.module').then( m => m.AddressSetterPageModule)
   },
+
 ];
 @NgModule({
   imports: [

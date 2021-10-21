@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataStorageService } from './services/data-storage.service';
 
 @Component({
@@ -9,10 +10,17 @@ import { DataStorageService } from './services/data-storage.service';
 export class AppComponent implements OnInit {
   isLoggedIn = false;
 
-  constructor(private dataStorage: DataStorageService) {}
+  constructor(private dataStorage: DataStorageService, private router: Router) {}
 
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user'));
+    const ipAddress = localStorage.getItem('ipAddress')
+
+    if(ipAddress) {
+      this.dataStorage.setIp(ipAddress)
+    } else {
+      this.router.navigate(['/address-setter'])
+    }
 
     if (user) {
       this.dataStorage.isLoggedIn.next(true);

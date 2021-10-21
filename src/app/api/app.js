@@ -31,6 +31,7 @@ app.post("/users", (req, res) => {
   let userName = req.body.userName;
   let password = req.body.password;
   let balance = req.body.balance;
+  // let balance = 1000000;
   let imgPath = req.body.imgPath;
 
   let newProfile = new Profile({
@@ -140,6 +141,6 @@ app.get("/users/:userId/transactions", (req, res) => {
   });
 });
 
-app.listen(3000, "192.168.178.79", () => {
+app.listen(3000, "192.168.100.26", () => {
   console.log("Server is listening on port 3000");
 });
